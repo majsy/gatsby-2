@@ -1,0 +1,18 @@
+{
+  "homePage": {
+    "title": "Home",
+    "introText": {
+      "first": "hejsan",
+      "second": "allihopa"
+    }
+  },
+  "aboutPage": {
+    "title": "About"
+  },
+  "header": {
+    "title": "header"
+  },
+  "footer": {
+    "title": "footer"
+  }
+}
