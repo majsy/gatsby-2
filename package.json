@@ -10,7 +10,8 @@
   "dependencies": {
     "gatsby": "next",
     "react": "16.4.1",
-    "react-dom": "16.4.1"
+    "react-dom": "16.4.1",
+    "react-transition-group": "2.4.0"
   },
   "devDependencies": {
     "gatsby-source-filesystem": "1.5.39",
