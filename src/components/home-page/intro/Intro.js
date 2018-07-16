@@ -1,13 +1,18 @@
 import React, { Component } from "react";
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { Transition, TransitionGroup } from 'react-transition-group';
 
 import styles from "./intro.module.css";
 import typography from "../../../base/typography.module.css";
 
 export default class Intro extends Component {
-  state = {
-    showFirstname: false,
-    showDescription: false
+  constructor() {
+    super();
+
+    this.state = {
+      showFirstname: false,
+      showLastname: false,
+      showDescription: false,
+    }
   }
 
   render() {
@@ -15,18 +20,32 @@ export default class Intro extends Component {
     const { showFirstname, showLastname, showDescription } = this.state;
 
     return (
-      <section className={styles.container}>
-        <CSSTransition in={true} appear={true} classNames='slide' timeout={1000}>
-          <div className={`${styles.textContainer}`} >
-            <h2 className={typography.display1} >{data.first}</h2>
-            <h2 className={typography.display1}>{data.second}</h2>
-          </div>
-        </CSSTransition>
-        <div className={styles.descriptionContainer}>
-          <h3 className={typography.display1}>}</h3>
-        </div>
-      </section>
+      
+      <Transition in={data !== null} appear mountOnEnter timeout={300} 
+        onEnter={() => {this.setState({showFirstname: true})}}>
+        {(status) => (
+          <section className={styles.container}>
+            <div className={`${styles.textContainer}`}>
+              <h2 className={`${typography.display1}
+                ${styles.firstname} 
+                ${status === 'entered' ? styles.showFirstname : ''}`}>
+                {data.first}
+              </h2>
+
+              <h2 className={`${typography.display1} 
+                ${styles.lastname}
+                ${status === 'entered' ? styles.showLastname : ''}`}>{data.second}</h2>
+            </div>
+
+            <div className={`${styles.descriptionContainer} 
+              ${status === 'entered' ? styles.showDescriptionContainer : ''}`}>
+              <h3 className={typography.display1}></h3>
+            </div>
+          </section>
+        )}
+      </Transition>
     )
   }
 }
+
   

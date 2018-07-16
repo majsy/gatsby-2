@@ -4,7 +4,6 @@ import Intro from "../components/home-page/intro/Intro";
 import Layout from "../components/layout/Layout";
 
 const IndexPage = ({ children, data:{allDataJson} }) => {
-  console.log(">>>>", allDataJson)
   return (
   <Layout>
     <h1>{allDataJson.edges[0].node.homePage.title}</h1>
